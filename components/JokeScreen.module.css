@@ -1,0 +1,125 @@
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  text-align: center;
+}
+
+.title {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.25;
+  color: var(--color-text);
+}
+
+.subtitle {
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+}
+
+/* Topic field */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  min-height: 64px;
+  padding-block: var(--space-sm) calc(var(--space-sm) + 12px);
+  padding-inline-start: calc(var(--space-sm) + 28px);
+  padding-inline-end: var(--space-sm);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
+  font-size: var(--font-size-body);
+  text-align: right;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.8;
+  text-align: right;
+}
+
+.input:focus-visible {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 3px rgba(33, 158, 188, 0.25);
+}
+
+.inputIcon {
+  position: absolute;
+  inset-inline-start: var(--space-sm);
+  top: var(--space-sm);
+  font-size: 18px;
+  line-height: 1.5;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.counter {
+  position: absolute;
+  inset-inline-end: var(--space-sm);
+  bottom: var(--space-xs);
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.help {
+  font-size: var(--font-size-small);
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+/* Primary CTA */
+.primaryButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  width: 100%;
+  min-height: var(--tap-min-height);
+  padding: var(--space-sm);
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-accent) 160%);
+  box-shadow: var(--shadow-soft);
+  color: var(--color-text);
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-bold);
+}
+
+.primaryButton:active {
+  filter: brightness(0.95);
+}
+
+.primaryButton:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

@@ -80,3 +80,6 @@ desktop.ini
 tmp/
 temp/
 *.tmp
+
+# --- Claude Code local launch config (machine-specific paths) ---
+.claude/launch.json

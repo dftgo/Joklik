@@ -140,7 +140,7 @@
 
 ---
 
-## Milestone 4 – השלמת העיצוב בהתאם ל-Design System
+## Milestone 4 – השלמת העיצוב בהתאם ל-Design System ✅
 
 ### שם ומטרה
 להביא את הממשק לרמת העיצוב הסופית בהתאם ל-DESIGN.md, ל-Style Guide ול-Mockups.

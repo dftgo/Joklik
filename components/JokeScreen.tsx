@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { CopyIcon, RetryIcon, ShareIcon } from "./icons";
 import styles from "./JokeScreen.module.css";
@@ -44,7 +45,14 @@ function classifyHttpError(status: number): ErrorKind {
   return "general";
 }
 
-export default function JokeScreen() {
+type Props = {
+  // Which owner-supplied illustrations exist in public/illustrations/.
+  hasHero: boolean;
+  hasLoading: boolean;
+  hasError: boolean;
+};
+
+export default function JokeScreen({ hasHero, hasLoading, hasError }: Props) {
   const [topic, setTopic] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [joke, setJoke] = useState("");
@@ -146,6 +154,14 @@ export default function JokeScreen() {
 
   const errorText = ERROR_TEXTS[errorKind];
 
+  // Main illustration area: hero on Initial, elephant on Loading, hidden otherwise.
+  const sceneSrc =
+    status === "idle" && hasHero
+      ? "/illustrations/hero.webp"
+      : status === "loading" && hasLoading
+        ? "/illustrations/loading.webp"
+        : null;
+
   return (
     <div className={styles.screen}>
       <header className={styles.header}>
@@ -154,6 +170,19 @@ export default function JokeScreen() {
           <span aria-hidden="true">🐾</span> הכנס נושא וקבל בדיחה מצחיקה
         </p>
       </header>
+
+      {sceneSrc && (
+        <div className={styles.scene}>
+          <Image
+            src={sceneSrc}
+            alt=""
+            fill
+            preload={sceneSrc.endsWith("hero.webp")}
+            sizes="(max-width: 480px) 100vw, 448px"
+            className={styles.art}
+          />
+        </div>
+      )}
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.field}>
@@ -241,7 +270,17 @@ export default function JokeScreen() {
 
         {status === "error" && (
           <section className={styles.card} aria-labelledby="error-title">
-            {/* Illustration slot: error.webp is added in Milestone 4. */}
+            {hasError && (
+              <div className={styles.errorArt}>
+                <Image
+                  src="/illustrations/error.webp"
+                  alt=""
+                  fill
+                  sizes="240px"
+                  className={styles.art}
+                />
+              </div>
+            )}
             <h2 id="error-title" className={styles.cardTitle}>
               {errorText.title}
             </h2>

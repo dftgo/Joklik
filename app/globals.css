@@ -13,6 +13,13 @@
   --color-text: #264653;
   --color-error: #e5484d;
   --color-border: rgba(141, 110, 99, 0.35);
+  /* Wooden sign header (derived from the palette) */
+  --color-wood-light: #fbe3b0;
+  --color-wood: #f0cf8e;
+  --color-wood-grain: rgba(141, 110, 99, 0.08);
+  --color-wood-nail: #8d6e63;
+  /* Translucent cream behind small text that may sit over the background art */
+  --color-bg-translucent: rgba(255, 248, 231, 0.85);
 
   /* Typography */
   --font-family: var(--font-heebo), "Heebo", Arial, sans-serif;

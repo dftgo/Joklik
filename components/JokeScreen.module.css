@@ -4,12 +4,72 @@
   gap: var(--space-md);
 }
 
-/* Header */
+/* Header: wooden sign (CSS only) */
 .header {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
   text-align: center;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 22px,
+      var(--color-wood-grain) 22px,
+      var(--color-wood-grain) 24px
+    ),
+    linear-gradient(180deg, var(--color-wood-light) 0%, var(--color-wood) 100%);
+  border: 2px solid var(--color-text-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 10px rgba(38, 70, 83, 0.15);
+}
+
+/* Two small nails in the top corners */
+.header::before,
+.header::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-wood-nail);
+  box-shadow: inset 0 -1px 1px rgba(0, 0, 0, 0.25);
+}
+
+.header::before {
+  inset-inline-start: 10px;
+}
+
+.header::after {
+  inset-inline-end: 10px;
+}
+
+/* Main illustration area: fixed height so swapping art never shifts the form */
+.scene {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  border: 2px solid var(--color-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+/* The supplied illustrations are full scenes, so they fill a rounded frame */
+.art {
+  object-fit: cover;
+}
+
+/* Monkey at the top of the error card */
+.errorArt {
+  position: relative;
+  width: min(100%, 240px);
+  aspect-ratio: 3 / 2;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
 }
 
 .title {
@@ -70,8 +130,10 @@
   box-shadow: 0 0 0 3px rgba(33, 158, 188, 0.25);
 }
 
+/* Stay opaque when disabled so the background art never shows through the text */
 .input:disabled {
-  opacity: 0.6;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
 }
 
 .inputIcon {
@@ -93,7 +155,12 @@
   pointer-events: none;
 }
 
+/* Small label with a cream backing so it stays readable over the background art */
 .help {
+  align-self: flex-start;
+  padding: 2px var(--space-xs);
+  background: var(--color-bg-translucent);
+  border-radius: var(--radius-sm);
   font-size: var(--font-size-small);
   color: var(--color-text-secondary);
   text-align: right;
